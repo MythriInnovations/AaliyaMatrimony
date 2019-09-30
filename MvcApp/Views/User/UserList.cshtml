@@ -1,0 +1,102 @@
+﻿@*@model UserListViewModel*@
+@model UserListViewModel;
+@{
+    ViewData["Title"] = "UserList";
+    Layout = "~/Views/Shared/_AaliyaLayout.cshtml";
+}
+@if (User.IsInRole("Admin"))
+{
+    <section>
+        <div class="container">
+            <div class="table-responsive-lg">
+                <form asp-action="Index" method="get">
+                    <div class="form-actions no-color">
+                        <p>
+                            Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+                            <input type="submit" value="Search" class="btn btn-default" /> |
+                            <a asp-action="UserList">Back to Full List</a>
+                        </p>
+                    </div>
+                </form>
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="table-success table-hover">
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Gender</th>
+                            <th>ViewClaim</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Users)
+                        {
+                            <tr>
+                                <td>
+                                    @item.UserName
+                                </td>
+                                <td>
+                                    @item.Email
+                                </td>
+                                <td>
+                                    @item.Gender
+                                </td>
+                                <td>
+                                    @item.UserName
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                @{
+                    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                    var nextDisabled = Model.HasNextPage ? "disabled" : "";
+                    var active = Model.CurrentPage == 1 ? "Active" : "";
+                    int staringPoint = Model.CurrentPage ?? 1;
+
+                    while ((staringPoint % Model.PageSize) != 0)
+                    {
+                        staringPoint -= 1;
+                    }
+
+                    staringPoint = staringPoint != 1 ? staringPoint += 1 : staringPoint;
+
+                    int count = 1;
+                }
+                <nav>
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item @prevDisabled">
+                            <a class="page-link" asp-action="UserList" asp-controller="User" asp-route-pagenumber="@(Model.CurrentPage - 1)">Previous</a>
+                        </li>
+                        @for (int i = staringPoint; (i <= Model.TotalPages && count <= 5); i++)
+                        {
+                            if (i == Model.CurrentPage)
+                            {
+                                <li class="page-item active" id="firstPage">
+                                    <a class="page-link" asp-action="UserList" asp-controller="User" asp-route-pagenumber="@i">@i</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="page-item" id="firstPage">
+                                    <a class="page-link" asp-action="UserList" asp-controller="User" asp-route-pagenumber="@i">@i</a>
+                                </li>
+                            }
+                            count += 1;
+                        }
+                        <li class="page-item">
+                            <a class="page-link @nextDisabled" asp-action="UserList" asp-controller="User" asp-route-pagenumber="@(Model.CurrentPage + 1)">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+}
+
+

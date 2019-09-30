@@ -1,0 +1,56 @@
+﻿@model UserViewModel;
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_AaliyaLayout.cshtml";
+}
+@if (User.IsInRole("Admin"))
+{
+    <section>
+        <div class="container">
+            <div class="d-flex mt-2">
+                <div class="pl-2">
+                    <div class="ml-2 card rounded mb-2 pl-2 pr-2 pt-1" style="width: 18rem;">
+
+                        <div class="bg-info text-white rounded pb-2 h6 text-lg-center">
+                            <div class="card-title">Register</div>
+                        </div>
+
+                        <div class="card-content">
+                            <form class="d-block" mthod="post" asp-controller="User" asp-action="Register">
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="UserName" asp-for="UserName" />
+                                    @*<span class="text-danger" asp-validation-for="UserName"></span>*@
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Password" asp-for="Password" />
+                                    @*<span class="text-danger" asp-validation-for="Password"></span>*@
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="ConfirmPassword" asp-for="ConfirmPassword" />
+                                    @*<span class="text-danger" asp-validation-for="ConfirmPassword"></span>*@
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Email" asp-for="Email" />
+                                    @*<span class="text-danger" asp-validation-for="Email"></span>*@
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" class="form-control" placeholder="Mobile" asp-for="Mobile" />
+                                    @*<span class="text-danger" asp-validation-for="Mobile"></span>*@
+                                </div>
+                                <div class="form-group">
+                                    <select asp-for="Gender" asp-items="Html.GetEnumSelectList<EGender>()" class="custom-select"></select>
+                                </div>
+                                <button type="submit" class="btn btn-info">Save</button>
+                                <a class="btn btn-secondary" asp-controller="Home" asp-action="Index">Cancel</a>
+                            </form>
+                        </div>
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <p class="text-success text-lg-center">@ViewBag.SuccessMessage</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

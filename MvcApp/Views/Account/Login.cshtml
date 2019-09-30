@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_AaliyaLayout.cshtml";
+}
+
+<section>
+    <div id="myHomediv" class="img-fluid">
+        <img src="~/images/homepage_default.jpg" alt="test" class="card-img-top" />
+        @{
+            await Html.RenderPartialAsync("_SearchViewPartial", new SearchVoewModel());
+        }
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 my-4 text-lg-center">
+                <i class="fas fa-cogs fa-3x align-self-center text-info"></i>
+                <h3 class="text-lg-center">Turning Gears</h3>
+                <p class="text-lg-center">Pomp his in and chill to strange lemans caught name said bower a his birth tis spoiled and himnot strength</p>
+            </div>
+            <div class="col-md-4 my-4 text-lg-center">
+                <i class="fas fa-cloud fa-3x align-self-center text-info"></i>
+                <h3 class="text-lg-center">Cart</h3>
+                <p class="text-lg-center">But little albions not and dote sighed come to in way to peace vile ways from thou to and who</p>
+            </div>
+            <div class="col-md-4 my-4 text-lg-center">
+                <i class="fas fa-cart-plus fa-3x align-self-center text-info"></i>
+                <h3 class="text-lg-center">Cart</h3>
+                <p class="text-lg-center">But little albions not and dote sighed come to in way to peace vile ways from thou to and who</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--SOME PHOTOS-->
+<section>
+    <div class="container">
+        <h1 class="text-center text-danger">Happy Families</h1>
+        <p class="text-center text-dark">Checkout Our Photos</p>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12 w-25">
+                <a href="https://source.unsplash.com/random/560*560" class="img-thumbnail">
+                    <img src="https://source.unsplash.com/random/560*560" class="img-fluid rounded " />
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 w-25">
+                <a href="https://source.unsplash.com/random/561*561">
+                    <img src="https://source.unsplash.com/random/561*561" class="img-fluid rounded " />
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 w-25">
+                <a href="https://source.unsplash.com/random/562*562">
+                    <img src="https://source.unsplash.com/random/562*562" class="img-fluid rounded" />
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>

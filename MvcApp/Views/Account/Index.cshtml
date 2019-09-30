@@ -1,0 +1,26 @@
+﻿@model List<Domain.Models.User>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<div class="row bg-info">
+    <div class="col">
+        <label>UserName</label>
+    </div>
+    <div class="col">
+        <label>Email</label>
+    </div>
+</div>
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col">
+            @item.UserName
+        </div>
+        <div class="col">
+            @item.Email
+        </div>
+    </div>
+}
+

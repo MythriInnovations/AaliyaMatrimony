@@ -1,0 +1,131 @@
+﻿@model MvcApp.Models.SearchVoewModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<section>
+    <div class="card text-center bg-info">
+        <h2 class="card-title text-center mt-2 text-white">
+            Find your partner
+        </h2>
+        <div class="card-body">
+            <form class="text-center" method="post" action="Search">
+                <div class="row justify-content-lg-center">
+                    <div class="col-lg-2 col-md-1">
+                        <p class="lead float-left text-white">I am looking for a</p>
+                        <div class="form-group">
+                            <select class="custom-select d-block" asp-for="SearchFor" asp-items="@Html.GetEnumSelectList<ESearchFor>()"></select>
+                            @*<select class="form-control" asp-for="Gender">
+                                <option value="Female" selected>
+                                    Bride
+                                </option>
+                                <option value="Male">
+                                    Grooms
+                                </option>
+                            </select>*@
+                        </div>
+                    </div>
+                    <div class="col-lg-1 text-center">
+                        <div>
+                            <p class="lead text-center text-white">Age</p>
+                            <div class="form-group justify-content-lg-center">
+                                <select class="custom-select" asp-for="AgeFrom">
+                                    @{
+                                        for (int i = 18; i <= 70; i++)
+                                        {
+                                            if (i == 20)
+                                            {
+                                                <option value="@i" selected>@i</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@i">@i</option>
+                                            }
+                                        }
+                                    }
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <p class="lead text-left invisible">To</p>
+                        <p class="lead text-white">To</p>
+                    </div>
+                    <div class="col-lg-1 float-lg-left">
+                        <div>
+                            <p class="lead text-left invisible">To</p>
+                            <div class="form-group justify-content-lg-center">
+                                <select class="custom-select" asp-for="AgeTo">
+                                    @{
+                                        for (int i = 18; i <= 70; i++)
+                                        {
+                                            if (i == 24)
+                                            {
+                                                <option value="@i" selected>@i</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@i">@i</option>
+                                            }
+                                        }
+                                    }
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-1">
+                        <div>
+                            <p class="lead text-center text-white">Religion</p>
+                            <div class="form-group">
+                                <select class="custom-select" asp-for="Religion">
+                                    @{
+                                        for (int i = 18; i <= 70; i++)
+                                        {
+                                            if (i == 24)
+                                            {
+                                                <option value="@i" selected>@i</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@i">@i</option>
+                                            }
+                                        }
+                                    }
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div>
+                            <p class="lead text-center text-white">Caste</p>
+                            <div class="form-group">
+                                <select class="custom-select" asp-for="Caste">
+                                    @{
+                                        for (int i = 18; i <= 70; i++)
+                                        {
+                                            if (i == 24)
+                                            {
+                                                <option value="@i" selected>@i</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@i">@i</option>
+                                            }
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button class="btn btn-secondary btn-group-lg text-white">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
